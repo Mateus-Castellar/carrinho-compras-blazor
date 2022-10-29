@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE274A77-DBB6-4189-AA27-A7859806A3AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnline.Web", "src\ShopOnline.Web\ShopOnline.Web.csproj", "{74C01D93-7C35-4FAA-A67F-126EBD7246A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.Web", "src\ShopOnline.Web\ShopOnline.Web.csproj", "{74C01D93-7C35-4FAA-A67F-126EBD7246A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnline.Api", "src\ShopOnline.Api\ShopOnline.Api.csproj", "{193335B0-3C78-4639-B224-EBA68E9D77AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.Api", "src\ShopOnline.Api\ShopOnline.Api.csproj", "{193335B0-3C78-4639-B224-EBA68E9D77AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnline.Models", "src\ShopOnline.Models\ShopOnline.Models.csproj", "{40899ADA-13A3-48BB-877F-D3159A045DDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.Models", "src\ShopOnline.Models\ShopOnline.Models.csproj", "{40899ADA-13A3-48BB-877F-D3159A045DDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
