@@ -2,6 +2,8 @@
 using ShopOnline.Web.Services.Contracts;
 using System.Net;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 
 namespace ShopOnline.Web.Services
 {
@@ -77,6 +79,26 @@ namespace ShopOnline.Web.Services
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public async Task<CartItemDto> UpdateQty(CartItemQtyUpdateDto cartItemQtyUpdateDto)
+        {
+            try
+            {
+                var jsonRequest = JsonSerializer.Serialize(cartItemQtyUpdateDto);
+                var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
+
+                var response = await _httpClient.PatchAsync($"api/shoppingCarts/{cartItemQtyUpdateDto.CartItemId}", content);
+
+                if (response.IsSuccessStatusCode) return await response.Content.ReadFromJsonAsync<CartItemDto>();
+
+                return null;
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }
