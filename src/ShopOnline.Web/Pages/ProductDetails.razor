@@ -1,13 +1,13 @@
 ﻿@page "/ProductDetails/{id:int}"
 @inherits ProductDetailsBase
 
-@if(Product == null && ErrorMessage == null)
+@if (Product == null && ErrorMessage == null)
 {
-    <h3>Carregando Detalhes Do Produto...</h3>   
+    <h3>Carregando Detalhes Do Produto...</h3>
 }
-else if(ErrorMessage is not null)
+else if (ErrorMessage is not null)
 {
-  <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
 }
 else
 {
@@ -24,6 +24,16 @@ else
                     @Product.Price.ToString("C")&nbsp;(@Product.Qty items in stock)
                 </b>
             </p>
+            <div>
+                <button @onclick="() => (AddToCart_Click(
+                    new CartItemtoAddDto{
+                        CartId = HardCoded.CartId,
+                        ProductId = Product.Id,
+                        Qty = 1
+                    }))" class="btn btn-success">
+                    <strong>Add To Cart</strong>
+                </button>
+            </div>
         </div>
     </div>
 }
