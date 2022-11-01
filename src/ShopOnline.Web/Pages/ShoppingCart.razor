@@ -1,0 +1,39 @@
+﻿@page "/ShoppingCart"
+@inherits ShoppingCartBase
+
+@if(ShoppingCartItems is null && ErrorMessage is null)
+{
+    <h3>Loading ShoppingCart...</h3>
+}
+else if(ErrorMessage is not null){
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+}
+else{
+    <h3 class="mb-5">Shopping Cart</h3>
+    <div class="row mb-5">
+        <div class="col-md-9">
+            @foreach(var item in ShoppingCartItems)
+            {
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="@item.ProductImageUrl" width="300" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-8">
+                        <h5>@item.Name</h5>
+                        <div class="mb-4">@item.Description</div>
+                        <span>Price: <strong>@item.Price.ToString("C")</strong></span>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-3">
+            <h5>Cart Summary</h5>
+            <div class="mt-2">
+                <div>Total -</div>
+                <a href="#" class="btn btn-success">
+                    <span class="oi oi-credit-card"></span>&nbsp; Proceed To Check
+                </a>
+            </div>
+        </div>
+    </div>
+}

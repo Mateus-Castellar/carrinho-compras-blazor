@@ -44,7 +44,7 @@ namespace ShopOnline.Web.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"api/{userId}/GetItems");
+                var response = await _httpClient.GetAsync($"api/shoppingCarts/{userId}/GetItems");
 
                 if (response.IsSuccessStatusCode)
                 {
