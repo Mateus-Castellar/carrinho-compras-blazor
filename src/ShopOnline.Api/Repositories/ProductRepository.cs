@@ -28,7 +28,7 @@ namespace ShopOnline.Api.Repositories
 
         public async Task<ProductCategory?> GetCategory(int id)
         {
-            return await _context.ProductCategories.FindAsync(id);
+            return await _context.ProductCategories.FirstOrDefaultAsync(lbda => lbda.Id == id);
         }
 
         public async Task<Product?> GetItem(int id)
