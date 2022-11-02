@@ -5,6 +5,10 @@
 {
     <h3>Carregando Produtos ...</h3>
 }
+else if(ErrorMessage is not null)
+{
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+}
 else
 {
     <h3 class="mb-5">Produtos</h3>

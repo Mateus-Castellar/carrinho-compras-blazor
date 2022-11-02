@@ -16,6 +16,8 @@ namespace ShopOnline.Web.Services
             _httpClient = httpClient;
         }
 
+        public event Action<int> OnShoppingCartChanged;
+
         public async Task<CartItemDto> AddItem(CartItemtoAddDto cartItemtoAddDto)
         {
             try
@@ -80,6 +82,14 @@ namespace ShopOnline.Web.Services
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void RaiseEventOnShoppingCartChanged(int totalQty)
+        {
+            if (OnShoppingCartChanged is not null)
+            {
+                OnShoppingCartChanged.Invoke(totalQty);
             }
         }
 

@@ -9,11 +9,28 @@ namespace ShopOnline.Web.Pages
         [Inject]
         public IProductService ProductService { get; set; } = null!;
 
-        public IEnumerable<ProductDto>? Products { get; set; }
+        [Inject]
+        public IShoppingCartService ShoppingCartService { get; set; } = null!;
+
+        public IEnumerable<ProductDto> Products { get; set; }
+
+        public string ErrorMessage { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Products = await ProductService.GetItems();
+            try
+            {
+                Products = await ProductService.GetItems();
+
+                var shoppingCartItens = await ShoppingCartService.GetItems(HardCoded.UserId);
+                var totalQty = shoppingCartItens.Sum(lbda => lbda.Qty);
+
+                ShoppingCartService.RaiseEventOnShoppingCartChanged(totalQty);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
 
         protected IOrderedEnumerable<IGrouping<int, ProductDto>> GetGroupedProductsByCategory()
@@ -23,6 +40,7 @@ namespace ShopOnline.Web.Pages
                    orderby prodByCatGroup.Key
                    select prodByCatGroup;
         }
+
         protected string GetCategoryName(IGrouping<int, ProductDto> groupedProductDtos)
         {
             return groupedProductDtos
